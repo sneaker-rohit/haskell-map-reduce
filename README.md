@@ -10,10 +10,16 @@ stack build
 ```
 stack exec mapreduce-haskell-project local count data
 ```
-## Run the project in a distributed fashion using Docker
+## Run the project in a distributed way on the same machine
+# Run the slaves 
 ```
-stack image container 
-docker-compose up
+stack exec mapreduce-haskell-project slave localhost 8081 
+stack exec mapreduce-haskell-project slave localhost 8082
+stack exec mapreduce-haskell-project slave localhost 8083
+stack exec mapreduce-haskell-project slave localhost 8084
+
+```
+# Run the master node and provide the input 4300.txt which is a sufficiently large file
+```
 stack exec mapreduce-haskell-project master localhost 8080 count 4300.txt
 ```
-
